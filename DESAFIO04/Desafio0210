@@ -1,0 +1,42 @@
+SELECT produto, valor
+FROM VENDAS
+WHERE valor > (
+    SELECT min(valor)
+    FROM VENDAS
+    WHERE categoria = 'Eletrônicos'
+);
+    /*### Exercício B
+
+> Mostre o vendedor que realizou a maior venda registrada na tabela.*/ 
+
+SELECT vendedor, 
+produto,
+valor
+FROM VENDAS
+WHERE valor = (SELECT max(valor) FROM VENDAS);
+ 
+/*### Exercício C
+
+> Liste as categorias que têm pelo menos um produto acima do preço médio geral.
+>*/
+
+Select categoria 
+from VENDAS 
+WHERE produto >( AVG(valor) 
+from VENDAS 
+);
+
+/*### Exercício D (Desafio)
+
+> Monte um ranking dos 3 produtos mais caros vendidos por cada vendedor.
+>*/
+
+SELECT vendedor, produto, valor
+FROM vendas v
+WHERE(
+    SELECT COUNT(*)
+    FROM vendas v
+    WHERE v.vendedor = v.vendedor
+      AND v.valor > v.valor
+  ) < 3
+ORDER BY vendedor, valor DESC;

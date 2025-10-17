@@ -1,0 +1,21 @@
+1. Liste o nome do cliente e o produto de cada venda, mostrando também a cidade.*/
+
+Select 
+c.nome As clientes,
+c.estado,
+v.produto
+from VENDAS V
+INNER JOIN CLIENTES C
+ON v.id_cliente = c.id_cliente
+
+
+2.Mostre o total de vendas por estado.*/
+
+
+SELECT
+c.estado,
+SUM(v.valor) AS total_vendas
+FROM VENDAS v
+INNER JOIN CLIENTES c
+ON v.id_cliente = c.id_cliente
+GROUP BY c.estado;

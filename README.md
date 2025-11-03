@@ -1,1 +1,4 @@
-#Banco_de_dados_relacional
+#SaimonGomes
+
+Repositório para atividades de Banco de Dados Relacionais.
+
